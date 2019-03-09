@@ -17,7 +17,30 @@ const init = _ => {
 
 // allow picking of player--eventlistener
 document.addEventListener('click', e => {
-
+  let chosenPlayer = document.querySelector('#chosenPlayer')
+  let enemyPlayers = document.querySelector('#enemyPlayers')
+  switch (e.target.id) {
+    case 'fire':
+    chosenPlayer.innerHTML = `
+    <h3>${playables[0].name}</h3>
+      <br>
+        <img src=${playables[0].img} alt="${playables[0].text}"> 
+      <br>
+      <p>${playables[0].healthpoints}</p>
+    `
+    break
+    case 'air':
+      console.log(e.target.id)
+    break
+    case 'water':
+      console.log(e.target.id)
+    break
+    case 'earth':
+      console.log(e.target.id)
+    break
+    default:
+    break
+  }
 })
 
 // move enemy into enemy div (html)
@@ -37,34 +60,38 @@ document.addEventListener('click', e => {
 // object of enemy stats/etc.
 let playables = [
   {
-    name: 'Arya Stark',
-    picture: "./assets/images/arya.jpg",
-    healthpoints: 150,
-    attackpower: 10,
-    counterattackpower:20, 
-  },
+  // < img class= "options" id = "fire" src = "./assets/images/fire.png" alt = "Fire" >
+  // <img class="options" id="air" src="./assets/images/air.png" alt="Air">
+  //   <img class="options" id="water" src="./assets/images/water.png" alt="Water">
+  //     <img class="options" id="earth" src="./assets/images/earth.png" alt="Earth">
+        name: 'Fire',
+        picture: "./assets/images/fire.png",
+        healthpoints: 150,
+        attackpower: 10,
+        counterattackpower: 20,
+      },
   {
-    name: 'Jon Snow',
-    picture: "./assets/images/jon.jpg",
-    healthpoints: 150,
-    attackpower: 10,
-    counterattackpower: 20,
-  },
+          name: 'Air',
+      picture: "./assets/images/air.png",
+      healthpoints: 150,
+      attackpower: 10,
+      counterattackpower: 20,
+    },
   {
-    name: 'Cersi Lanister',
-    picture: "./assets/images/cersei.jpg",
-    healthpoints: 150,
-    attackpower: 10,
-    counterattackpower: 20,
-  },
+          name: 'Water',
+      picture: "./assets/images/water.png",
+      healthpoints: 150,
+      attackpower: 10,
+      counterattackpower: 20,
+    },
   {
-    name: 'Daenerys Targarian',
-    picture: "./assets/images/daenerys.jpg",
-    healthpoints: 150,
-    attackpower: 10,
-    counterattackpower: 20,
-  },
-]
-
-// run init
-init()
+          name: 'Earth',
+      picture: "./assets/images/earth.png",
+      healthpoints: 150,
+      attackpower: 10,
+      counterattackpower: 20,
+    },
+  ]
+  
+  // run init
+  init()
