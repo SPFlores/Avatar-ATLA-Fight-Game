@@ -1,3 +1,38 @@
+let playables = [
+  {
+    name: 'Fire',
+    picture: "./assets/images/fire.png",
+    healthpoints: 150,
+    attack: 10,
+    attackpower: 10,
+    counterattackpower: 20,
+  },
+  {
+    name: 'Air',
+    picture: "./assets/images/air.png",
+    healthpoints: 150,
+    attack: 10,
+    attackpower: 10,
+    counterattackpower: 20,
+  },
+  {
+    name: 'Water',
+    picture: "./assets/images/water.png",
+    healthpoints: 150,
+    attack: 10,
+    attackpower: 10,
+    counterattackpower: 20,
+  },
+  {
+    name: 'Earth',
+    picture: "./assets/images/earth.png",
+    healthpoints: 150,
+    atack: 10,
+    attackpower: 10,
+    counterattackpower: 20,
+  },
+]
+
 let player = 0
 let enemy = 0
 let isEnemy = false
@@ -10,6 +45,9 @@ let chosenPlayerHP = document.querySelector('#chosenPlayerHP')
 let currentEnemyName = document.querySelector('#currentEnemyName')
 let currentEnemyPic = document.querySelector('#currentEnemyPic')
 let currentEnemyHP = document.querySelector('#currentEnemyHP')
+
+let playerHP = playables[player].healthpoints
+let enemyHP = playables[enemy].healthpoints
 
 // init function to reset
 const init = _ => {
@@ -24,7 +62,7 @@ const init = _ => {
 const choosePlayer = (player) => {
   chosenPlayerName.innerHTML = `<h4>${playables[player].name}</h4>`
   chosenPlayerPic.innerHTML = `<img class="options" src="${playables[player].picture}" alt="${playables[player].text}">`
-  chosenPlayerHP.innerHTML = `<h6>${playables[player].healthpoints}</h6>`
+  chosenPlayerHP.innerHTML = `<h6>${playerHP}</h6>`
 
   isPlayer = true
 }
@@ -72,10 +110,10 @@ const pickEnemy = (player) => {
 
     if ((e.target.className === 'options hiddenEnemies') && (!isEnemy) && (isPlayer)) {
       enemy += value
-      
+
       currentEnemyName.innerHTML = `<h4>${playables[enemy].name}</h4>`
       currentEnemyPic.innerHTML = `<img class="options" src="${playables[enemy].picture}" alt="${playables[enemy].text}">`
-      currentEnemyHP.innerHTML = `<h6>${playables[enemy].healthpoints}</h6>`
+      currentEnemyHP.innerHTML = `<h6>${enemyHP}</h6>`
       
       document.querySelector(`#hiddenEnemy${value}`).style.display = "none"
 
@@ -90,18 +128,18 @@ const pickEnemy = (player) => {
 }
 
 const fightEnemy = (player, enemy) => {
-  let playerHP = playables[player].healthpoints
   let playerAttack = playables[player].attack
   let playerAttackPower = playables[player].attackpower
   let enemyAttack = playables[enemy].counterattackpower
-  let enemyHP = playables[enemy].healthpoints
 
   if (isEnemy && isPlayer) {
     document.querySelector('.attackBtn').style.display = "inline"
     document.addEventListener('click', e => {
       if (e.target.className === 'attackBtn') {
         enemyHP -= playerAttack
+        currentEnemyHP.innerHTML = `<h6>${enemyHP}<?h6>`
         playerHP -= enemyAttack
+        chosenPlayerHP.innerHTML = `<h6>${playerHP}</h6>`
         playerAttack += playerAttackPower
         // check HP of both
         hpCheck()
@@ -166,40 +204,6 @@ document.addEventListener('click', e => {
 // }
 
 // object of enemy stats/etc.
-let playables = [
-  {
-    name: 'Fire',
-    picture: "./assets/images/fire.png",
-    healthpoints: 150,
-    attack: 10,
-    attackpower: 10,
-    counterattackpower: 20,
-  },
-  {
-    name: 'Air',
-    picture: "./assets/images/air.png",
-    healthpoints: 150,
-    attack: 10,
-    attackpower: 10,
-    counterattackpower: 20,
-  },
-  {
-    name: 'Water',
-    picture: "./assets/images/water.png",
-    healthpoints: 150,
-    attack: 10,
-    attackpower: 10,
-    counterattackpower: 20,
-  },
-  {
-    name: 'Earth',
-    picture: "./assets/images/earth.png",
-    healthpoints: 150,
-    atack: 10,
-    attackpower: 10,
-    counterattackpower: 20,
-  },
-]
 
 // run init
 init()
