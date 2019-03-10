@@ -191,6 +191,10 @@ const moveEnemies = (value) => {
   }
 }
 
+const clearChoices = _ => {
+  document.querySelector('#playerOptions').innerHTML = ""
+}
+
 // allow picking of player--eventlistener
 document.addEventListener('click', e => {
   let chosenPlayer = document.querySelector('#chosenPlayer')
@@ -200,18 +204,22 @@ document.addEventListener('click', e => {
     case 0:
       choosePlayer(value)
       moveEnemies(value)
+      clearChoices()
       break
     case 1:
       choosePlayer(value)
       moveEnemies(value)
+      clearChoices()
       break
     case 2:
       choosePlayer(value)
       moveEnemies(value)
+      clearChoices()
       break
     case 3:
       choosePlayer(value)
       moveEnemies(value)
+      clearChoices()
       break
     default:
       break
