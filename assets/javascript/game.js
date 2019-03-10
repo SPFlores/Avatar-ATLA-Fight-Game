@@ -226,8 +226,6 @@ document.addEventListener('click', e => {
   }
 })
 
-// move enemy into enemy div (html)
-
 // make it impossible to click on another enemy (not chosen)
 
 // when attack clicked, attack other player, lower health of enemy
