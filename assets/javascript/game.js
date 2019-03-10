@@ -41,38 +41,46 @@ const choosePlayer = (value) => {
   switch (value) {
     case 0:
       chosenPlayer.innerHTML = `
-    <h6>${playables[0].name}</h6>
+    <div class="col s6 m3 l3 xl3">
+      <h6>${playables[0].name}</h6>
       <br>
         <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
       <br>
       <p>${playables[0].healthpoints}</p>
+      </div>
     `
       break
     case 1:
       chosenPlayer.innerHTML = `
+      <div class="col s6 m3 l3 xl3">
     <h6>${playables[1].name}</h6>
       <br>
         <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
       <br>
       <p>${playables[1].healthpoints}</p>
+      </div>
     `
       break
     case 2:
       chosenPlayer.innerHTML = `
+      <div class="col s6 m3 l3 xl3">
     <h6>${playables[2].name}</h6>
       <br>
         <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
       <br>
       <p>${playables[2].healthpoints}</p>
+      </div>
     `
       break
     case 3:
       chosenPlayer.innerHTML = `
+      <div class="col s6 m3 l3 xl3">
     <h6>${playables[3].name}</h6>
       <br>
         <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
       <br>
       <p>${playables[3].healthpoints}</p>
+      </div>
     `
       break
     default:
@@ -84,74 +92,98 @@ const moveEnemies = (value) => {
   switch (value) {
     case 0:
       enemyPlayers.innerHTML = `
+    <div class="col s6 m3 l3 xl3">
     <h6>${playables[1].name}</h6>
-      <br>
-        <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
-      <br>
-      <p>${playables[1].healthpoints}</p>
-      <h6>${playables[2].name}</h6>
-      <br>
-        <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
-      <p>${playables[2].healthpoints}</p>
-      <h6>${playables[3].name}</h6>
-      <br>
-        <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
-      <br>
-      <p>${playables[3].healthpoints}</p>
+    <br>
+    <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
+    <br>
+    <p>${playables[1].healthpoints}</p>
+    </div>
+    <div class="col s6 m3 l3 xl3">
+    <h6>${playables[2].name}</h6>
+    <br>
+    <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
+    <p>${playables[2].healthpoints}</p>
+    </div>
+    <div class="col s6 m3 l3 xl3">
+    <h6>${playables[3].name}</h6>
+    <br>
+    <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
+    <br>
+    <p>${playables[3].healthpoints}</p>
+    </div>
     `
       break
     case 1:
       enemyPlayers.innerHTML = `
+    <div class="col s6 m3 l3 xl3">
     <h6>${playables[0].name}</h6>
-      <br>
-        <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
-      <br>
-      <p>${playables[0].healthpoints}</p>
-      <h6>${playables[2].name}</h6>
-      <br>
-        <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
-      <p>${playables[2].healthpoints}</p>
-      <h6>${playables[3].name}</h6>
-      <br>
-        <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
-      <br>
-      <p>${playables[3].healthpoints}</p>
+    <br>
+    <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
+    <br>
+    <p>${playables[0].healthpoints}</p>
+    </div>
+    <div class="col s6 m3 l3 xl3">
+    <h6>${playables[2].name}</h6>
+    <br>
+    <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
+    <p>${playables[2].healthpoints}</p>
+    </div>
+    <div class="col s6 m3 l3 xl3">
+    <h6>${playables[3].name}</h6>
+    <br>
+    <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
+    <br>
+    <p>${playables[3].healthpoints}</p>
+    </div>
     `
       break
     case 2:
       enemyPlayers.innerHTML = `
+    <div class="col s6 m3 l3 xl3">
     <h6>${playables[0].name}</h6>
       <br>
         <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
       <br>
       <p>${playables[0].healthpoints}</p>
+      </div>
+      <div class="col s6 m3 l3 xl3">
       <h6>${playables[1].name}</h6>
       <br>
         <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
       <p>${playables[1].healthpoints}</p>
+      </div>
+      <div class="col s6 m3 l3 xl3">
       <h6>${playables[3].name}</h6>
       <br>
         <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
       <br>
       <p>${playables[3].healthpoints}</p>
+      </div>
     `
       break
     case 3:
       enemyPlayers.innerHTML = `
+     <div class="col s6 m3 l3 xl3">
     <h6>${playables[0].name}</h6>
       <br>
         <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
       <br>
       <p>${playables[0].healthpoints}</p>
+      </div>
+      <div class="col s6 m3 l3 xl3">
       <h6>${playables[1].name}</h6>
       <br>
         <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
       <p>${playables[1].healthpoints}</p>
+      </div>
+      <div class="col s6 m3 l3 xl3">
       <h6>${playables[2].name}</h6>
       <br>
         <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
       <br>
       <p>${playables[2].healthpoints}</p>
+      </div>
     `
       break
     default:
