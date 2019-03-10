@@ -22,11 +22,11 @@ const init = _ => {
 const choosePlayer = (player) => {
   chosenPlayer.innerHTML = `
     <div class="col s6 m3 l3 xl3">
-      <h6>${playables[player].name}</h6>
+      <h4>${playables[player].name}</h4>
       <br>
         <img class="options" src="${playables[player].picture}" alt="${playables[player].text}"> 
       <br>
-      <p>${playables[player].healthpoints}</p>
+      <h6>${playables[player].healthpoints}</h6>
       </div>
     `
   isPlayer = true
@@ -77,11 +77,11 @@ const pickEnemy = (player) => {
     if ((e.target.className === 'options hiddenEnemies') && (!isEnemy) && (isPlayer)) {
       currentEnemy.innerHTML = `
     <div class="col s6 m3 l3 xl3">
-      <h6>${playables[value].name}</h6>
+      <h4>${playables[value].name}</h4>
       <br>
         <img class="options" src="${playables[value].picture}" alt="${playables[value].text}"> 
       <br>
-      <p>${playables[value].healthpoints}</p>
+      <h6>${playables[value].healthpoints}</h6>
       </div>
     `
       document.querySelector(`#hiddenEnemy${value}`).style.display = "none"
@@ -95,20 +95,29 @@ const pickEnemy = (player) => {
 }
 
 const fightEnemy = (player, enemy) => {
+  let playerHP = playables[player].healthpoints
+  let playerAttack = playables[player].attack
+  let playerAttackPower = playables[player].attackpower
+  
+  let enemyAttack = playables[enemy].counterattackpower
+  let enemyHP = playables[enemy].healthpoints
+
   // show button if player and enemy chosen
   if (isEnemy && isPlayer) {
     document.querySelector('#attackBtn').style.display = "inline"
     // listen for click of button
     document.addEventListener('click', e => {
       if (document.querySelector('#attackBtn')) {
-        console.log(`player: ${playables[player].attackpower}`)
-        console.log(`enemy: ${playables[enemy].counterattackpower}`)
+        // decrease HP of enemy by attack of player
+        enemyHP -= playerAttack
+        // decrease HP of player by counterattack of enemy
+        playerHP -= enemyAttack
+        // increase attack of player by attack
+        playerAttack += playerAttackPower
+
       }
     })
   }
-  // decrease HP of enemy by attack of player
-  // decrease HP of player by counterattack of enemy
-  // increase attack of player by attack
   // check HP of both
   hpCheck()
 }
@@ -116,8 +125,8 @@ const fightEnemy = (player, enemy) => {
 const hpCheck = () => {
   // check if HP of player is 0, loss
   // check if HP of enemy is 0
-    // if 0, pickEnemy
-    // if not, back to fightEnemy
+  // if 0, pickEnemy
+  // if not, back to fightEnemy
 }
 
 const gamePlay = (player) => {
@@ -126,7 +135,6 @@ const gamePlay = (player) => {
   clearChoices()
   pickEnemy(player)
 }
-
 
 document.addEventListener('click', e => {
   let player = parseInt(e.target.dataset.value)
@@ -174,6 +182,7 @@ let playables = [
     name: 'Fire',
     picture: "./assets/images/fire.png",
     healthpoints: 150,
+    attack: 10,
     attackpower: 10,
     counterattackpower: 20,
   },
@@ -181,6 +190,7 @@ let playables = [
     name: 'Air',
     picture: "./assets/images/air.png",
     healthpoints: 150,
+    attack: 10,
     attackpower: 10,
     counterattackpower: 20,
   },
@@ -188,6 +198,7 @@ let playables = [
     name: 'Water',
     picture: "./assets/images/water.png",
     healthpoints: 150,
+    attack: 10,
     attackpower: 10,
     counterattackpower: 20,
   },
@@ -195,6 +206,7 @@ let playables = [
     name: 'Earth',
     picture: "./assets/images/earth.png",
     healthpoints: 150,
+    atack: 10,
     attackpower: 10,
     counterattackpower: 20,
   },
