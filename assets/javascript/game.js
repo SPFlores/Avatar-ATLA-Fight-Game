@@ -4,6 +4,28 @@ let attack
 let win
 let loss
 
+// const valueArr = [0, 1, 2, 3]
+
+// const movingChars = (value) => {
+//   let charValFinder = valueArr.filter(number => {
+//     let charVal = value
+//     return number !== value
+//   })
+//   // chosenPlayer.innerHTML = `
+//   //   <h6>${playables[0].name}</h6>
+//   //     <br>
+//   //       <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
+//   //     <br>
+//   //     <p>${playables[0].healthpoints}</p>
+//   //   `
+//   // enemyPlayers.innerHTML = `
+//   //   <h6>${playables[1].name}</h6>
+//   //     <br>
+//   //       <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
+//   //     <br>
+//   //     <p>${playables[1].healthpoints}</p>
+//   //   `
+// }
 
 // init function to reset
 const init = _ => {
@@ -15,19 +37,9 @@ const init = _ => {
   // reset all html elements
 }
 
-// allow picking of player--eventlistener
-document.addEventListener('click', e => {
-  let chosenPlayer = document.querySelector('#chosenPlayer')
-  let enemyPlayers = document.querySelector('#enemyPlayers')
-  switch (e.target.id) {
-    case 'fire':
-      chosenPlayer.innerHTML = `
-    <h6>${playables[0].name}</h6>
-      <br>
-        <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
-      <br>
-      <p>${playables[0].healthpoints}</p>
-    `
+const moveEnemies = (value) => {
+  switch (value) {
+    case 0:
       enemyPlayers.innerHTML = `
     <h6>${playables[1].name}</h6>
       <br>
@@ -44,16 +56,175 @@ document.addEventListener('click', e => {
       <br>
       <p>${playables[3].healthpoints}</p>
     `
-      console.log(e.target.id)
       break
-    case 'air':
-      console.log(e.target.id)
+    case 1:
+      enemyPlayers.innerHTML = `
+    <h6>${playables[0].name}</h6>
+      <br>
+        <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
+      <br>
+      <p>${playables[0].healthpoints}</p>
+      <h6>${playables[2].name}</h6>
+      <br>
+        <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
+      <p>${playables[2].healthpoints}</p>
+      <h6>${playables[3].name}</h6>
+      <br>
+        <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
+      <br>
+      <p>${playables[3].healthpoints}</p>
+    `
       break
-    case 'water':
-      console.log(e.target.id)
+    case 2:
+      enemyPlayers.innerHTML = `
+    <h6>${playables[0].name}</h6>
+      <br>
+        <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
+      <br>
+      <p>${playables[0].healthpoints}</p>
+      <h6>${playables[1].name}</h6>
+      <br>
+        <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
+      <p>${playables[1].healthpoints}</p>
+      <h6>${playables[3].name}</h6>
+      <br>
+        <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
+      <br>
+      <p>${playables[3].healthpoints}</p>
+    `
       break
-    case 'earth':
-      console.log(e.target.id)
+    case 3:
+      enemyPlayers.innerHTML = `
+    <h6>${playables[0].name}</h6>
+      <br>
+        <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
+      <br>
+      <p>${playables[0].healthpoints}</p>
+      <h6>${playables[1].name}</h6>
+      <br>
+        <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
+      <p>${playables[1].healthpoints}</p>
+      <h6>${playables[2].name}</h6>
+      <br>
+        <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
+      <br>
+      <p>${playables[2].healthpoints}</p>
+    `
+      break
+    default:
+      break
+  }
+}
+
+// allow picking of player--eventlistener
+document.addEventListener('click', e => {
+  let chosenPlayer = document.querySelector('#chosenPlayer')
+  let enemyPlayers = document.querySelector('#enemyPlayers')
+  let value = parseInt(e.target.dataset.value)
+  switch (value) {
+    case 0:
+      chosenPlayer.innerHTML = `
+    <h6>${playables[0].name}</h6>
+      <br>
+        <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
+      <br>
+      <p>${playables[0].healthpoints}</p>
+    `
+    //   enemyPlayers.innerHTML = `
+    // <h6>${playables[1].name}</h6>
+    //   <br>
+    //     <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
+    //   <br>
+    //   <p>${playables[1].healthpoints}</p>
+    //   <h6>${playables[2].name}</h6>
+    //   <br>
+    //     <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
+    //   <p>${playables[2].healthpoints}</p>
+    //   <h6>${playables[3].name}</h6>
+    //   <br>
+    //     <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
+    //   <br>
+    //   <p>${playables[3].healthpoints}</p>
+    // `
+    moveEnemies(value)
+      break
+    case 1:
+      chosenPlayer.innerHTML = `
+    <h6>${playables[1].name}</h6>
+      <br>
+        <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
+      <br>
+      <p>${playables[1].healthpoints}</p>
+    `
+    //   enemyPlayers.innerHTML = `
+    // <h6>${playables[0].name}</h6>
+    //   <br>
+    //     <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
+    //   <br>
+    //   <p>${playables[0].healthpoints}</p>
+    //   <h6>${playables[2].name}</h6>
+    //   <br>
+    //     <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
+    //   <p>${playables[2].healthpoints}</p>
+    //   <h6>${playables[3].name}</h6>
+    //   <br>
+    //     <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
+    //   <br>
+    //   <p>${playables[3].healthpoints}</p>
+    // `
+    moveEnemies(value)
+      break
+    case 2:
+      chosenPlayer.innerHTML = `
+    <h6>${playables[2].name}</h6>
+      <br>
+        <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
+      <br>
+      <p>${playables[2].healthpoints}</p>
+    `
+    //   enemyPlayers.innerHTML = `
+    // <h6>${playables[0].name}</h6>
+    //   <br>
+    //     <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
+    //   <br>
+    //   <p>${playables[0].healthpoints}</p>
+    //   <h6>${playables[1].name}</h6>
+    //   <br>
+    //     <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
+    //   <p>${playables[1].healthpoints}</p>
+    //   <h6>${playables[3].name}</h6>
+    //   <br>
+    //     <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
+    //   <br>
+    //   <p>${playables[3].healthpoints}</p>
+    // `
+    moveEnemies(value)
+      break
+    case 3:
+      chosenPlayer.innerHTML = `
+    <h6>${playables[3].name}</h6>
+      <br>
+        <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
+      <br>
+      <p>${playables[3].healthpoints}</p>
+    `
+    //   enemyPlayers.innerHTML = `
+    // <h6>${playables[0].name}</h6>
+    //   <br>
+    //     <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
+    //   <br>
+    //   <p>${playables[0].healthpoints}</p>
+    //   <h6>${playables[1].name}</h6>
+    //   <br>
+    //     <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
+    //   <p>${playables[1].healthpoints}</p>
+    //   <h6>${playables[2].name}</h6>
+    //   <br>
+    //     <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
+    //   <br>
+    //   <p>${playables[2].healthpoints}</p>
+    // `
+    moveEnemies(value)
       break
     default:
       break
