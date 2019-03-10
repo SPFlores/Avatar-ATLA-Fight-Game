@@ -89,102 +89,31 @@ const choosePlayer = (value) => {
 }
 
 const moveEnemies = (value) => {
+  let hiddenEnemy0 = document.querySelector('#hiddenEnemy0')
+  let hiddenEnemy1 = document.querySelector('#hiddenEnemy1')
+  let hiddenEnemy2 = document.querySelector('#hiddenEnemy2')
+  let hiddenEnemy3 = document.querySelector('#hiddenEnemy3')
+
   switch (value) {
     case 0:
-      enemyPlayers.innerHTML = `
-    <div class="col s6 m3 l3 xl3">
-    <h6>${playables[1].name}</h6>
-    <br>
-    <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
-    <br>
-    <p>${playables[1].healthpoints}</p>
-    </div>
-    <div class="col s6 m3 l3 xl3">
-    <h6>${playables[2].name}</h6>
-    <br>
-    <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
-    <p>${playables[2].healthpoints}</p>
-    </div>
-    <div class="col s6 m3 l3 xl3">
-    <h6>${playables[3].name}</h6>
-    <br>
-    <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
-    <br>
-    <p>${playables[3].healthpoints}</p>
-    </div>
-    `
+      hiddenEnemy1.style.display = "inline"
+      hiddenEnemy2.style.display = "inline"
+      hiddenEnemy3.style.display = "inline"
       break
     case 1:
-      enemyPlayers.innerHTML = `
-    <div class="col s6 m3 l3 xl3">
-    <h6>${playables[0].name}</h6>
-    <br>
-    <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
-    <br>
-    <p>${playables[0].healthpoints}</p>
-    </div>
-    <div class="col s6 m3 l3 xl3">
-    <h6>${playables[2].name}</h6>
-    <br>
-    <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
-    <p>${playables[2].healthpoints}</p>
-    </div>
-    <div class="col s6 m3 l3 xl3">
-    <h6>${playables[3].name}</h6>
-    <br>
-    <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
-    <br>
-    <p>${playables[3].healthpoints}</p>
-    </div>
-    `
+      hiddenEnemy0.style.display = "inline"
+      hiddenEnemy2.style.display = "inline"
+      hiddenEnemy3.style.display = "inline"
       break
     case 2:
-      enemyPlayers.innerHTML = `
-    <div class="col s6 m3 l3 xl3">
-    <h6>${playables[0].name}</h6>
-      <br>
-        <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
-      <br>
-      <p>${playables[0].healthpoints}</p>
-      </div>
-      <div class="col s6 m3 l3 xl3">
-      <h6>${playables[1].name}</h6>
-      <br>
-        <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
-      <p>${playables[1].healthpoints}</p>
-      </div>
-      <div class="col s6 m3 l3 xl3">
-      <h6>${playables[3].name}</h6>
-      <br>
-        <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
-      <br>
-      <p>${playables[3].healthpoints}</p>
-      </div>
-    `
+      hiddenEnemy0.style.display = "inline"
+      hiddenEnemy1.style.display = "inline"
+      hiddenEnemy3.style.display = "inline"
       break
     case 3:
-      enemyPlayers.innerHTML = `
-     <div class="col s6 m3 l3 xl3">
-    <h6>${playables[0].name}</h6>
-      <br>
-        <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
-      <br>
-      <p>${playables[0].healthpoints}</p>
-      </div>
-      <div class="col s6 m3 l3 xl3">
-      <h6>${playables[1].name}</h6>
-      <br>
-        <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
-      <p>${playables[1].healthpoints}</p>
-      </div>
-      <div class="col s6 m3 l3 xl3">
-      <h6>${playables[2].name}</h6>
-      <br>
-        <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
-      <br>
-      <p>${playables[2].healthpoints}</p>
-      </div>
-    `
+      hiddenEnemy0.style.display = "inline"
+      hiddenEnemy1.style.display = "inline"
+      hiddenEnemy2.style.display = "inline"
       break
     default:
       break
@@ -192,10 +121,10 @@ const moveEnemies = (value) => {
 }
 
 const clearChoices = _ => {
-  document.querySelector('#playerOptions').innerHTML = ""
+  let chooseablePlayers = document.querySelector('#playerOptions')
+  chooseablePlayers.style.display = "none"
 }
 
-// allow picking of player--eventlistener
 document.addEventListener('click', e => {
   let chosenPlayer = document.querySelector('#chosenPlayer')
   let enemyPlayers = document.querySelector('#enemyPlayers')

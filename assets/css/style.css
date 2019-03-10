@@ -1,4 +1,12 @@
 .options {
-height: 150px;
-width: 150px
+  height: 150px;
+  width: 150px;
+}
+
+.chooseablePlayers {
+  display: block;
+}
+
+.hiddenEnemies {
+  display: none;
 }
