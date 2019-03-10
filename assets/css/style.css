@@ -10,3 +10,7 @@
 .hiddenEnemies {
   display: none;
 }
+
+#attackBtn {
+  display: none;
+}
