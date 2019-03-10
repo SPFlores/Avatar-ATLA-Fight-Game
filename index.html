@@ -11,36 +11,53 @@
 </head>
 
 <body>
-  <h1>Title of Game</h1>
-
-  <div id="instructions">
-    <!-- what to do, how to choose -->
-    Click on a tribe to choose who you will fight with and to get your enemy options.
-  </div>
-
-  <div id="playerOptions">
-    <!-- all the options that they player can choose -->
-    <img class="options" id="fire" src="./assets/images/fire.png" alt="Fire" data-value="0">
-    <img class="options" id="air" src="./assets/images/air.png" alt="Air" data-value="1">
-    <img class="options" id="water" src="./assets/images/water.png" alt="Water" data-value="2">
-    <img class="options" id="earth" src="./assets/images/earth.png" alt="Earth" data-value="3">
-  </div>
-  <div>
-    <h2>Chosen Player</h2>
-    <div id="chosenPlayer">
-      <!-- player the user has chosen -->
+  <div class="container">
+    <div class="row">
+      <h1>Title of Game</h1>
     </div>
-  </div>
-  <br>
-  <br>
-  <div>
-    <h2>Enemies</h2>
-    <div id="enemyPlayers">
-      <!-- enemies -->
+    <div class="row">
+      <div id="instructions">
+        <h6>Instructions</h6>
+        <!-- what to do, how to choose -->
+        <p>Click on a tribe to choose who you will fight with and to get your enemy options.</p>
+      </div>
     </div>
-  </div>
-  <div class="currentEnemy">
-    <!-- current enemy you're fighting -->
+
+    <div class="row">
+      <h2>Player Options</h2>
+      <div id="playerOptions">
+        <!-- all the options that they player can choose -->
+        <div class="col s6 m3 l3 xl3">
+          <img class="options" id="fire" src="./assets/images/fire.png" alt="Fire" data-value="0">
+        </div>
+        <div class="col s6 m3 l3 xl3">
+          <img class="options" id="air" src="./assets/images/air.png" alt="Air" data-value="1">
+        </div>
+        <div class="col s6 m3 l3 xl3">
+          <img class="options" id="water" src="./assets/images/water.png" alt="Water" data-value="2">
+        </div>
+        <div class="col s6 m3 l3 xl3">
+          <img class="options" id="earth" src="./assets/images/earth.png" alt="Earth" data-value="3">
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2>Chosen Player</h2>
+      <div id="chosenPlayer">
+        <!-- player the user has chosen -->
+      </div>
+    </div>
+    <br>
+    <br>
+    <div>
+      <h2>Enemies</h2>
+      <div id="enemyPlayers">
+        <!-- enemies -->
+      </div>
+    </div>
+    <div class="currentEnemy">
+      <!-- current enemy you're fighting -->
+    </div>
   </div>
 
 
