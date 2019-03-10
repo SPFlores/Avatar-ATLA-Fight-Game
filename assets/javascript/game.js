@@ -88,8 +88,20 @@ const clearChoices = _ => {
 
 const pickEnemy = _ => {
   document.addEventListener('click', e => {
+    let value = parseInt(e.target.dataset.value)
+    let currentEnemy = document.querySelector('#currentEnemy')
+
     if (e.target.className === 'options hiddenEnemies') {
-      console.log(e.target)
+      currentEnemy.innerHTML = `
+    <div class="col s6 m3 l3 xl3">
+      <h6>${playables[value].name}</h6>
+      <br>
+        <img class="options" src="${playables[value].picture}" alt="${playables[value].text}"> 
+      <br>
+      <p>${playables[value].healthpoints}</p>
+      </div>
+    `
+    document.querySelector(`#hiddenEnemy${value}`).style.display = "none"
 
     }
   })
