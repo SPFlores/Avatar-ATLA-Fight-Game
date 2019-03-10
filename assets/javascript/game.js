@@ -38,54 +38,15 @@ const init = _ => {
 }
 
 const choosePlayer = (value) => {
-  switch (value) {
-    case 0:
-      chosenPlayer.innerHTML = `
+  chosenPlayer.innerHTML = `
     <div class="col s6 m3 l3 xl3">
-      <h6>${playables[0].name}</h6>
+      <h6>${playables[value].name}</h6>
       <br>
-        <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
+        <img class="options" src="${playables[value].picture}" alt="${playables[value].text}"> 
       <br>
-      <p>${playables[0].healthpoints}</p>
+      <p>${playables[value].healthpoints}</p>
       </div>
     `
-      break
-    case 1:
-      chosenPlayer.innerHTML = `
-      <div class="col s6 m3 l3 xl3">
-    <h6>${playables[1].name}</h6>
-      <br>
-        <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
-      <br>
-      <p>${playables[1].healthpoints}</p>
-      </div>
-    `
-      break
-    case 2:
-      chosenPlayer.innerHTML = `
-      <div class="col s6 m3 l3 xl3">
-    <h6>${playables[2].name}</h6>
-      <br>
-        <img class="options" src="${playables[2].picture}" alt="${playables[2].text}"> 
-      <br>
-      <p>${playables[2].healthpoints}</p>
-      </div>
-    `
-      break
-    case 3:
-      chosenPlayer.innerHTML = `
-      <div class="col s6 m3 l3 xl3">
-    <h6>${playables[3].name}</h6>
-      <br>
-        <img class="options" src="${playables[3].picture}" alt="${playables[3].text}"> 
-      <br>
-      <p>${playables[3].healthpoints}</p>
-      </div>
-    `
-      break
-    default:
-      break
-  }
 }
 
 const moveEnemies = (value) => {
@@ -129,7 +90,7 @@ const pickEnemy = _ => {
   document.addEventListener('click', e => {
     if (e.target.className === 'options hiddenEnemies') {
       console.log(e.target)
-      
+
     }
   })
 }
@@ -139,34 +100,10 @@ document.addEventListener('click', e => {
   let enemyPlayers = document.querySelector('#enemyPlayers')
   let value = parseInt(e.target.dataset.value)
   if (e.target.className === 'options chooseablePlayers') {
-    switch (value) {
-      case 0:
-        choosePlayer(value)
-        moveEnemies(value)
-        clearChoices()
-        pickEnemy()
-        break
-      case 1:
-        choosePlayer(value)
-        moveEnemies(value)
-        clearChoices()
-        pickEnemy()
-        break
-      case 2:
-        choosePlayer(value)
-        moveEnemies(value)
-        clearChoices()
-        pickEnemy()
-        break
-      case 3:
-        choosePlayer(value)
-        moveEnemies(value)
-        clearChoices()
-        pickEnemy()
-        break
-      default:
-        break
-    }
+    choosePlayer(value)
+    moveEnemies(value)
+    clearChoices()
+    pickEnemy()
   }
 })
 
@@ -185,10 +122,6 @@ document.addEventListener('click', e => {
 // object of enemy stats/etc.
 let playables = [
   {
-    // < img class= "options" id = "fire" src = "./assets/images/fire.png" alt = "Fire" >
-    // <img class="options" id="air" src="./assets/images/air.png" alt="Air">
-    //   <img class="options" id="water" src="./assets/images/water.png" alt="Water">
-    //     <img class="options" id="earth" src="./assets/images/earth.png" alt="Earth">
     name: 'Fire',
     picture: "./assets/images/fire.png",
     healthpoints: 150,
