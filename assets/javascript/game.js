@@ -125,33 +125,48 @@ const clearChoices = _ => {
   chooseablePlayers.style.display = "none"
 }
 
+const pickEnemy = _ => {
+  document.addEventListener('click', e => {
+    if (e.target.className === 'options hiddenEnemies') {
+      console.log(e.target)
+      
+    }
+  })
+}
+
 document.addEventListener('click', e => {
   let chosenPlayer = document.querySelector('#chosenPlayer')
   let enemyPlayers = document.querySelector('#enemyPlayers')
   let value = parseInt(e.target.dataset.value)
-  switch (value) {
-    case 0:
-      choosePlayer(value)
-      moveEnemies(value)
-      clearChoices()
-      break
-    case 1:
-      choosePlayer(value)
-      moveEnemies(value)
-      clearChoices()
-      break
-    case 2:
-      choosePlayer(value)
-      moveEnemies(value)
-      clearChoices()
-      break
-    case 3:
-      choosePlayer(value)
-      moveEnemies(value)
-      clearChoices()
-      break
-    default:
-      break
+  if (e.target.className === 'options chooseablePlayers') {
+    switch (value) {
+      case 0:
+        choosePlayer(value)
+        moveEnemies(value)
+        clearChoices()
+        pickEnemy()
+        break
+      case 1:
+        choosePlayer(value)
+        moveEnemies(value)
+        clearChoices()
+        pickEnemy()
+        break
+      case 2:
+        choosePlayer(value)
+        moveEnemies(value)
+        clearChoices()
+        pickEnemy()
+        break
+      case 3:
+        choosePlayer(value)
+        moveEnemies(value)
+        clearChoices()
+        pickEnemy()
+        break
+      default:
+        break
+    }
   }
 })
 
