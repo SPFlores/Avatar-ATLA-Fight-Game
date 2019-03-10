@@ -104,21 +104,21 @@ const clearChoices = _ => {
 }
 
 const pickEnemy = (player, enemy) => {
-  console.log(isEnemy)
-  console.log(isPlayer)
   document.addEventListener('click', e => {
     let value = parseInt(e.target.dataset.value)
 
-    if ((e.target.className === 'options hiddenEnemies')) {
-      if ((!isEnemy) && (isPlayer)) {
+    if ((!isEnemy) && (isPlayer)) {
+      if ((e.target.className === 'options hiddenEnemies')) {
+        console.log(enemy)
         enemy += value
 
         currentEnemyName.innerHTML = `<h4>${playables[enemy].name}</h4>`
         currentEnemyPic.innerHTML = `<img class="options" src="${playables[enemy].picture}" alt="${playables[enemy].text}">`
         currentEnemyHP.innerHTML = `<h6>${playables[enemy].healthpoints}</h6>`
 
-        console.log(`enemy: ${enemy}`)
+        console.log(`value: ${value}`)
         console.log(`player: ${player}`)
+        console.log(`enemy: ${enemy}`)
 
         document.querySelector(`#hiddenEnemy${value}`).style.display = "none"
 
@@ -126,10 +126,7 @@ const pickEnemy = (player, enemy) => {
         console.log(`switch isEnemy`)
 
         fightEnemy(player, enemy)
-      } else {
-        pickEnemy(player, enemy)
       }
-
     }
   })
 }
@@ -139,6 +136,8 @@ const fightEnemy = (player, enemy) => {
   let playerAttack = playables[player].attack
   let playerAttackPower = playables[player].attackpower
   let enemyAttack = playables[enemy].counterattackpower
+  console.log(player)
+  console.log(enemy)
 
   if (isEnemy && isPlayer) {
     document.querySelector('.attackBtn').style.display = "inline"
@@ -165,9 +164,9 @@ const hpCheck = (player, enemy) => {
     currentEnemyPic.innerHTML = ""
     currentEnemyHP.innerHTML = ""
     isEnemy = false
-    let enemy = 0
-    let enemyHP = ''
-    pickEnemy(player, enemy)
+    let enemyReset = 0
+    // let enemyHP = ''
+    pickEnemy(player, enemyReset)
   }
   // check if HP of player is 0, loss
   // check if HP of enemy is 0
@@ -189,16 +188,6 @@ document.addEventListener('click', e => {
     gamePlay(player)
   }
 })
-
-// when attack clicked, attack other player, lower health of enemy
-// counter attack by challenger, lower health of player
-// attack goes up on player for each round
-
-// if player health <= 0, lose
-
-// if challenger health <= 0, pick another enemy, repeat attack loop
-
-// if player health >0 and no other enemies left, win
 
 // const valueArr = [0, 1, 2, 3]
 
@@ -223,7 +212,6 @@ document.addEventListener('click', e => {
 //   //   `
 // }
 
-// object of enemy stats/etc.
 
 // run init
 init()
