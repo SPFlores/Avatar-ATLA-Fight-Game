@@ -85,12 +85,15 @@ const pickEnemy = (player) => {
       </div>
     `
       document.querySelector(`#hiddenEnemy${value}`).style.display = "none"
+
+      isEnemy = true
+      enemy += value
+
+      fightEnemy(player, enemy)
+    } else {
+      pickEnemy()
     }
 
-    isEnemy = true
-    enemy += value
-
-    fightEnemy(player, enemy)
   })
 }
 
@@ -98,28 +101,27 @@ const fightEnemy = (player, enemy) => {
   let playerHP = playables[player].healthpoints
   let playerAttack = playables[player].attack
   let playerAttackPower = playables[player].attackpower
-  
+
   let enemyAttack = playables[enemy].counterattackpower
   let enemyHP = playables[enemy].healthpoints
 
   // show button if player and enemy chosen
   if (isEnemy && isPlayer) {
-    document.querySelector('#attackBtn').style.display = "inline"
+    document.querySelector('.attackBtn').style.display = "inline"
     // listen for click of button
     document.addEventListener('click', e => {
-      if (document.querySelector('#attackBtn')) {
+      if (e.target.className === 'attackBtn') {
         // decrease HP of enemy by attack of player
         enemyHP -= playerAttack
         // decrease HP of player by counterattack of enemy
         playerHP -= enemyAttack
         // increase attack of player by attack
         playerAttack += playerAttackPower
-
+        // check HP of both
+        hpCheck()
       }
     })
   }
-  // check HP of both
-  hpCheck()
 }
 
 const hpCheck = () => {
@@ -127,6 +129,7 @@ const hpCheck = () => {
   // check if HP of enemy is 0
   // if 0, pickEnemy
   // if not, back to fightEnemy
+  console.log('HP Check')
 }
 
 const gamePlay = (player) => {
