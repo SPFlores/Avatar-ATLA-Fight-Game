@@ -131,13 +131,13 @@ const pickEnemy = (player) => {
 const fightEnemy = (player, enemy) => {
   let enemyHP = playables[enemy].healthpoints
   let enemyAttack = playables[enemy].counterattackpower
-  console.log(isEnemy)
-  console.log(isPlayer)
+  console.log(enemy)
+  // console.log(isPlayer)
 
   document.querySelector('.attackBtn').style.display = 'inline'
 
   document.addEventListener('click', e => {
-    if ((e.target.className === 'attackBtn') && (isEnemy)) {
+    if ((e.target.className === 'attackBtn') && (isEnemy) && (enemyHP > 0)) {
       console.log(isEnemy)
       playerHP -= enemyAttack
       chosenPlayerHP.innerHTML = `<h6>${playerHP}</h6>`
