@@ -33,28 +33,30 @@ let playables = [
   },
 ]
 
-let player = 0
-let enemy = 0
-let isEnemy = false
-let isPlayer = false
+let player,
+  enemy,
+  isEnemy,
+  isPlayer
 
 let chosenPlayerName = document.querySelector('#chosenPlayerName')
 let chosenPlayerPic = document.querySelector('#chosenPlayerPic')
 let chosenPlayerHP = document.querySelector('#chosenPlayerHP')
 let playerHP = playables[player].healthpoints
+let playerAttack = playables[player].attack
 
 let currentEnemyName = document.querySelector('#currentEnemyName')
 let currentEnemyPic = document.querySelector('#currentEnemyPic')
 let currentEnemyHP = document.querySelector('#currentEnemyHP')
 let enemyHP = playables[enemy].healthpoints
 
-// init function to reset
 const init = _ => {
+  let isEnemy = false
+  let isPlayer = false
   // reset player
+  player = 0
   // reset enemy
+  enemy = 0
   // reset all health
-  // reset all attack
-  // reset all counter attack
   // reset all html elements
 }
 
@@ -63,6 +65,7 @@ const choosePlayer = (player) => {
   chosenPlayerName.innerHTML = `<h4>${playables[player].name}</h4>`
   chosenPlayerPic.innerHTML = `<img class="options" src="${playables[player].picture}" alt="${playables[player].text}">`
   chosenPlayerHP.innerHTML = `<h6>${playerHP}</h6>`
+  console.log(isPlayer)
 
 }
 
@@ -103,44 +106,48 @@ const clearChoices = _ => {
   chooseablePlayers.style.display = "none"
 }
 
-const pickEnemy = (player, enemy) => {
-  document.addEventListener('click', e => {
-    let value = parseInt(e.target.dataset.value)
+const pickEnemy = (player) => {
+  enemy = 0
+  if ((!isEnemy) && (isPlayer)) {
+    document.addEventListener('click', e => {
+      if ((e.target.id === 'hiddenEnemy0') || (e.target.id === 'hiddenEnemy1') || (e.target.id === 'hiddenEnemy2') || (e.target.id === 'hiddenEnemy3')) {
+        let value = parseInt(e.target.dataset.value)
 
-    if ((!isEnemy) && (isPlayer)) {
-      if ((e.target.className === 'options hiddenEnemies')) {
+        console.log(e.target.id)
+        console.log(isEnemy)
+        console.log(isPlayer)
         console.log(enemy)
+        console.log(value)
+        console.log(enemy + value)
+
         enemy += value
 
         currentEnemyName.innerHTML = `<h4>${playables[enemy].name}</h4>`
         currentEnemyPic.innerHTML = `<img class="options" src="${playables[enemy].picture}" alt="${playables[enemy].text}">`
         currentEnemyHP.innerHTML = `<h6>${playables[enemy].healthpoints}</h6>`
 
-        console.log(`value: ${value}`)
-        console.log(`player: ${player}`)
-        console.log(`enemy: ${enemy}`)
+        // console.log(`value: ${value}`)
+        // console.log(`player: ${player}`)
+        // console.log(`enemy: ${enemy}`)
 
         document.querySelector(`#hiddenEnemy${value}`).style.display = "none"
 
         isEnemy = true
-        console.log(`switch isEnemy`)
 
         fightEnemy(player, enemy)
       }
-    }
-  })
+    })
+  }
 }
 
-
 const fightEnemy = (player, enemy) => {
-  let playerAttack = playables[player].attack
   let playerAttackPower = playables[player].attackpower
   let enemyAttack = playables[enemy].counterattackpower
-  console.log(player)
-  console.log(enemy)
 
   if (isEnemy && isPlayer) {
+
     document.querySelector('.attackBtn').style.display = "inline"
+
     document.addEventListener('click', e => {
       if (e.target.className === 'attackBtn') {
         playerHP -= enemyAttack
@@ -148,8 +155,8 @@ const fightEnemy = (player, enemy) => {
         enemyHP -= playerAttack
         currentEnemyHP.innerHTML = `<h6>${enemyHP}<?h6>`
         playerAttack += playerAttackPower
-        // check HP of both
         hpCheck(player, enemy)
+        console.log(`enemy HP: ${enemyHP}`)
       }
     })
   }
@@ -163,23 +170,17 @@ const hpCheck = (player, enemy) => {
     currentEnemyName.innerHTML = ""
     currentEnemyPic.innerHTML = ""
     currentEnemyHP.innerHTML = ""
+    document.querySelector('.attackBtn').style.display = "none"
     isEnemy = false
-    let enemyReset = 0
-    // let enemyHP = ''
-    pickEnemy(player, enemyReset)
+    pickEnemy()
   }
-  // check if HP of player is 0, loss
-  // check if HP of enemy is 0
-  // if 0, pickEnemy
-  // if not, back to fightEnemy
-  // console.log('HP Check')
 }
 
 const gamePlay = (player) => {
   choosePlayer(player)
   moveEnemies(player)
   clearChoices()
-  pickEnemy(player, enemy)
+  pickEnemy(player)
 }
 
 document.addEventListener('click', e => {
@@ -188,6 +189,13 @@ document.addEventListener('click', e => {
     gamePlay(player)
   }
 })
+
+// console.log(player)
+// console.log(enemy)
+// console.log(`enemy attack: ${enemyAttack}`)
+// console.log(`player HP: ${playerHP}`)
+// console.log(`player attack: ${playerAttack}`)
+// console.log(`enemy HP: ${enemyHP}`)
 
 // const valueArr = [0, 1, 2, 3]
 
