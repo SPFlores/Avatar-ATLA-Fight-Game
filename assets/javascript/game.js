@@ -1,7 +1,7 @@
 let playables = [
   {
     name: 'Fire',
-    picture: "./assets/images/fire.png",
+    picture: './assets/images/fire.png',
     healthpoints: 150,
     attack: 10,
     attackpower: 10,
@@ -9,7 +9,7 @@ let playables = [
   },
   {
     name: 'Air',
-    picture: "./assets/images/air.png",
+    picture: './assets/images/air.png',
     healthpoints: 150,
     attack: 10,
     attackpower: 10,
@@ -17,7 +17,7 @@ let playables = [
   },
   {
     name: 'Water',
-    picture: "./assets/images/water.png",
+    picture: './assets/images/water.png',
     healthpoints: 150,
     attack: 10,
     attackpower: 10,
@@ -25,7 +25,7 @@ let playables = [
   },
   {
     name: 'Earth',
-    picture: "./assets/images/earth.png",
+    picture: './assets/images/earth.png',
     healthpoints: 150,
     attack: 10,
     attackpower: 10,
@@ -43,6 +43,8 @@ let chosenPlayerName = document.querySelector('#chosenPlayerName')
 let chosenPlayerPic = document.querySelector('#chosenPlayerPic')
 let chosenPlayerHP = document.querySelector('#chosenPlayerHP')
 let playerHP = playables[player].healthpoints
+let playerAttack = playables[player].attack
+let playerAttackPower = playables[player].attackpower
 
 let currentEnemyName = document.querySelector('#currentEnemyName')
 let currentEnemyPic = document.querySelector('#currentEnemyPic')
@@ -64,7 +66,6 @@ const choosePlayer = (player) => {
   chosenPlayerName.innerHTML = `<h4>${playables[player].name}</h4>`
   chosenPlayerPic.innerHTML = `<img class="options" src="${playables[player].picture}" alt="${playables[player].text}">`
   chosenPlayerHP.innerHTML = `<h6>${playerHP}</h6>`
-  console.log(`player: ${player}`)
   pickEnemy(player)
 }
 
@@ -73,36 +74,36 @@ const moveEnemies = (player) => {
   let hiddenEnemy1 = document.querySelector('#hiddenEnemy1')
   let hiddenEnemy2 = document.querySelector('#hiddenEnemy2')
   let hiddenEnemy3 = document.querySelector('#hiddenEnemy3')
-  
+
   switch (player) {
     case 0:
-    hiddenEnemy1.style.display = "inline"
-    hiddenEnemy2.style.display = "inline"
-    hiddenEnemy3.style.display = "inline"
-    break
+      hiddenEnemy1.style.display = 'inline'
+      hiddenEnemy2.style.display = 'inline'
+      hiddenEnemy3.style.display = 'inline'
+      break
     case 1:
-    hiddenEnemy0.style.display = "inline"
-    hiddenEnemy2.style.display = "inline"
-    hiddenEnemy3.style.display = "inline"
-    break
+      hiddenEnemy0.style.display = 'inline'
+      hiddenEnemy2.style.display = 'inline'
+      hiddenEnemy3.style.display = 'inline'
+      break
     case 2:
-    hiddenEnemy0.style.display = "inline"
-    hiddenEnemy1.style.display = "inline"
-    hiddenEnemy3.style.display = "inline"
-    break
+      hiddenEnemy0.style.display = 'inline'
+      hiddenEnemy1.style.display = 'inline'
+      hiddenEnemy3.style.display = 'inline'
+      break
     case 3:
-    hiddenEnemy0.style.display = "inline"
-    hiddenEnemy1.style.display = "inline"
-    hiddenEnemy2.style.display = "inline"
-    break
+      hiddenEnemy0.style.display = 'inline'
+      hiddenEnemy1.style.display = 'inline'
+      hiddenEnemy2.style.display = 'inline'
+      break
     default:
-    break
+      break
   }
 }
 
 const clearChoices = _ => {
   let chooseablePlayers = document.querySelector('#playerOptions')
-  chooseablePlayers.style.display = "none"
+  chooseablePlayers.style.display = 'none'
 }
 
 const pickEnemy = (player) => {
@@ -112,43 +113,41 @@ const pickEnemy = (player) => {
     if ((e.target.className === 'options hiddenEnemies') && (!isEnemy)) {
       let value = parseInt(e.target.dataset.value)
       console.log(`second test`)
-      
+
       isEnemy = true
       enemy = enemyHolder + value
-      
+
       currentEnemyName.innerHTML = `<h4>${playables[enemy].name}</h4>`
       currentEnemyPic.innerHTML = `<img class="options" src="${playables[enemy].picture}" alt="${playables[enemy].text}">`
       currentEnemyHP.innerHTML = `<h6>${playables[enemy].healthpoints}</h6>`
-      
-      document.querySelector(`#hiddenEnemy${value}`).style.display = "none"
-      
+
+      document.querySelector(`#hiddenEnemy${value}`).style.display = 'none'
+
       fightEnemy(player, enemy)
     }
   })
 }
 
 const fightEnemy = (player, enemy) => {
-  let playerAttackPower = playables[player].attackpower
-  let enemyAttack = playables[enemy].counterattackpower
-  let playerAttack = playables[player].attack
   let enemyHP = playables[enemy].healthpoints
+  let enemyAttack = playables[enemy].counterattackpower
+  console.log(isEnemy)
+  console.log(isPlayer)
 
-  if (isEnemy && isPlayer) {
+  document.querySelector('.attackBtn').style.display = 'inline'
 
-    document.querySelector('.attackBtn').style.display = "inline"
-
-    document.addEventListener('click', e => {
-      if (e.target.className === 'attackBtn') {
-        playerHP -= enemyAttack
-        chosenPlayerHP.innerHTML = `<h6>${playerHP}</h6>`
-        enemyHP -= playerAttack
-        currentEnemyHP.innerHTML = `<h6>${enemyHP}<?h6>`
-        playerAttack += playerAttackPower
-        console.log(`enemy HP: ${enemyHP}`)
-        hpCheck(player, enemy, enemyHP)
-      }
-    })
-  }
+  document.addEventListener('click', e => {
+    if ((e.target.className === 'attackBtn') && (isEnemy)) {
+      console.log(isEnemy)
+      playerHP -= enemyAttack
+      chosenPlayerHP.innerHTML = `<h6>${playerHP}</h6>`
+      enemyHP -= playerAttack
+      currentEnemyHP.innerHTML = `<h6>${enemyHP}<?h6>`
+      playerAttack += playerAttackPower
+      console.log(`enemy HP: ${enemyHP}`)
+      hpCheck(player, enemy, enemyHP)
+    }
+  })
 }
 
 const hpCheck = (player, enemy, enemyHP) => {
@@ -157,14 +156,15 @@ const hpCheck = (player, enemy, enemyHP) => {
     console.log('reset')
   } else if ((playerHP > 0) && (enemyHP <= 0)) {
     console.log('pick new')
-    console.log(`enemyHP: ${enemyHP}`)
-    currentEnemyName.innerHTML = ""
-    currentEnemyPic.innerHTML = ""
-    currentEnemyHP.innerHTML = ""
-    document.querySelector('.attackBtn').style.display = "none"
+    currentEnemyName.innerHTML = ''
+    currentEnemyPic.innerHTML = ''
+    currentEnemyHP.innerHTML = ''
+    document.querySelector('.attackBtn').style.display = 'none'
     isEnemy = false
     enemy = 0
     pickEnemy(player)
+  } else if ((playerHP > 0) && (enemyHP >= 0)) {
+    console.log('both alive')
   }
 }
 
@@ -180,37 +180,6 @@ document.addEventListener('click', e => {
     gamePlay(player)
   }
 })
-
-// console.log(player)
-// console.log(enemy)
-// console.log(`enemy attack: ${enemyAttack}`)
-// console.log(`player HP: ${playerHP}`)
-// console.log(`player attack: ${playerAttack}`)
-// console.log(`enemy HP: ${enemyHP}`)
-
-// const valueArr = [0, 1, 2, 3]
-
-// const movingChars = (value) => {
-//   let charValFinder = valueArr.filter(number => {
-//     let charVal = value
-//     return number !== value
-//   })
-//   // chosenPlayer.innerHTML = `
-//   //   <h6>${playables[0].name}</h6>
-//   //     <br>
-//   //       <img class="options" src="${playables[0].picture}" alt="${playables[0].text}"> 
-//   //     <br>
-//   //     <p>${playables[0].healthpoints}</p>
-//   //   `
-//   // enemyPlayers.innerHTML = `
-//   //   <h6>${playables[1].name}</h6>
-//   //     <br>
-//   //       <img class="options" src="${playables[1].picture}" alt="${playables[1].text}"> 
-//   //     <br>
-//   //     <p>${playables[1].healthpoints}</p>
-//   //   `
-// }
-
 
 // run init
 init()
