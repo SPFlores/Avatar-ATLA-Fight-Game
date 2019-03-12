@@ -68,6 +68,8 @@ let hiddenEnemy3 = document.querySelector('#hiddenEnemy3')
 
 let playAgainButton = document.querySelector('.playAgainBtn')
 
+let backgroundEditing = document.body.style
+
 const init = _ => {
   isEnemy = false
   isPlayer = false
@@ -110,7 +112,17 @@ const choosePlayer = (player) => {
   chosenPlayerPic.innerHTML = `<img class="options" src="${playables[player].picture}" alt="${playables[player].text}">`
   chosenPlayerHP.innerHTML = `<h6>${playerHP}</h6>`
 
-  document.body.style.background = `url('${playables[player].backgroundimage}')`
+  backgroundEditing.background = `url('${playables[player].backgroundimage}')`
+  backgroundEditing.backgroundRepeat = 'no-repeat'
+  backgroundEditing.backgroundAttachment = 'fixed'
+  backgroundEditing.backgroundPosition = 'center'
+  backgroundEditing.backgroundSize = 'cover'
+
+  // background - attachment
+  // background - position
+  // background - size
+
+  backgroundEditing.backgroundSize = '100% 100%'
 
   pickEnemy(player)
 }
