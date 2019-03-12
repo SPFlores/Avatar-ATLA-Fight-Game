@@ -3,11 +3,12 @@ body {
   height: 100%;
   background-size: 100%;
   background-attachment: fixed;
+  min-height: 475px;
 }
 
 .options {
   height: 150px;
-  width: 150px;
+  /* width: 150px; */
 }
 
 .chooseablePlayers {
