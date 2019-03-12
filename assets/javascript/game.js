@@ -5,7 +5,7 @@ let playables = [
     healthpoints: 150,
     attack: 10,
     attackpower: 10,
-    counterattackpower: 20
+    counterattackpower: 2
   },
   {
     name: 'Air',
@@ -13,7 +13,7 @@ let playables = [
     healthpoints: 150,
     attack: 10,
     attackpower: 10,
-    counterattackpower: 20
+    counterattackpower: 2
   },
   {
     name: 'Water',
@@ -21,7 +21,7 @@ let playables = [
     healthpoints: 150,
     attack: 10,
     attackpower: 10,
-    counterattackpower: 20
+    counterattackpower: 2
   },
   {
     name: 'Earth',
@@ -29,7 +29,7 @@ let playables = [
     healthpoints: 150,
     attack: 10,
     attackpower: 10,
-    counterattackpower: 20
+    counterattackpower: 2
   },
 ]
 
