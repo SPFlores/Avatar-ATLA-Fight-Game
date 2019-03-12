@@ -12,4 +12,4 @@ All playable characters have different attack levels, all characters have differ
 
 Thanks to Patrick "Dragon" B and "Royal" Rey G for testing, playing, and generally supporting me while I struggled through this. 
 
-https://stackoverflow.com/questions/30098942/javascript-set-all-values-in-array-of-object thread used as a starting point to figure out how to reset enemy array values (there's probably an easier way to do it, but ¯\_(ツ)_/¯ it finally works and after almost 6 hours over 2 days that's all I care about). All other code should be original.
+https://stackoverflow.com/questions/30098942/javascript-set-all-values-in-array-of-object thread used as a starting point to figure out how to reset enemy array values (there's probably an easier way to do it, but ¯\_(ツ)_/¯ it finally works and after almost 6 hours over 2 days that's all I care about). And god bless W3 schools for always knowing what I need, even if I don't know exactly what I'm looking for. All other code should be originally synthesized using those resources.
