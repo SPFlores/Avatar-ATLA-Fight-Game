@@ -1,14 +1,14 @@
 body {
   background: url("../images/background-map.png") no-repeat;
   height: 100%;
-  background-size: 100%;
+  background-size: cover;
   background-attachment: fixed;
-  min-height: 475px;
+  height: auto;
+  background-position: center;
 }
 
 .options {
   height: 150px;
-  /* width: 150px; */
 }
 
 .chooseablePlayers {
@@ -24,5 +24,9 @@ body {
 }
 
 .resetBtn {
+  display: none;
+}
+
+.playAgainBtn {
   display: none;
 }

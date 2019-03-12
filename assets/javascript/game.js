@@ -4,7 +4,7 @@ let playables = [
     picture: './assets/images/fire.png',
     healthpoints: 150,
     healthpointsreset: 150,
-    attack: 10,
+    attack: 1000,
     attackpower: 10,
     counterattackpower: 2
   },
@@ -61,6 +61,8 @@ let hiddenEnemy0 = document.querySelector('#hiddenEnemy0')
 let hiddenEnemy1 = document.querySelector('#hiddenEnemy1')
 let hiddenEnemy2 = document.querySelector('#hiddenEnemy2')
 let hiddenEnemy3 = document.querySelector('#hiddenEnemy3')
+
+let playAgainButton = document.querySelector('.playAgainBtn')
 
 const init = _ => {
   isEnemy = false
@@ -145,36 +147,48 @@ const clearChoices = _ => {
 
 const win = _ => {
   // show something about how you won
+  document.querySelector('#winloss').innerHTML = `
+  <h6>Congratulations ${playables[player].name}, you have won!</h6>
+  <h6>“As long as I’m confident with who I am, it doesn’t matter what other people think”—Smellerbee, Episode 2.12 “The Serpent’s Pass”</h6>
+  <h6>Do you have enough confidence to play again?</h6>
+  `
+  playAgainButton.style.display = 'inline'
   console.log(`you won`)
 }
 
 const loss = _ => {
   // register loss
+  document.querySelector('#winloss').innerHTML = `
+  <h6>I'm sorry ${playables[player].name}, this time you have failed!</h6>
+  <h6>“You have come to the crossroads of your destiny. It is time for you to choose.”—Iroh, Episode 2.20 “The Crossroads of Destiny”</h6>
+  <h6>Do you choose to play again?</h6>
+  `
+  playAgainButton.style.display = 'inline'
   console.log(`loss`)
 }
 
 const pickEnemy = (player) => {
   if (enemyCounter === 3) {
     win()
+  } else {
+    enemyholder = 0
+    document.addEventListener('click', e => {
+      if ((e.target.className === 'options hiddenEnemies') && (!isEnemy)) {
+        let value = parseInt(e.target.dataset.value)
+
+        isEnemy = true
+        enemy = enemyHolder + value
+
+        currentEnemyName.innerHTML = `<h4>${playables[enemy].name}</h4>`
+        currentEnemyPic.innerHTML = `<img class="options" src="${playables[enemy].picture}" alt="${playables[enemy].text}">`
+        currentEnemyHP.innerHTML = `<h6>${playables[enemy].healthpoints}</h6>`
+
+        document.querySelector(`#hiddenEnemy${value}`).style.display = 'none'
+
+        fightEnemy(player, enemy)
+      }
+    })
   }
-
-  enemyholder = 0
-  document.addEventListener('click', e => {
-    if ((e.target.className === 'options hiddenEnemies') && (!isEnemy)) {
-      let value = parseInt(e.target.dataset.value)
-
-      isEnemy = true
-      enemy = enemyHolder + value
-
-      currentEnemyName.innerHTML = `<h4>${playables[enemy].name}</h4>`
-      currentEnemyPic.innerHTML = `<img class="options" src="${playables[enemy].picture}" alt="${playables[enemy].text}">`
-      currentEnemyHP.innerHTML = `<h6>${playables[enemy].healthpoints}</h6>`
-
-      document.querySelector(`#hiddenEnemy${value}`).style.display = 'none'
-
-      fightEnemy(player, enemy)
-    }
-  })
 }
 
 const fightEnemy = (player, enemy) => {
