@@ -208,7 +208,6 @@ const hpCheck = (player, enemy, enemyHP) => {
     isEnemy = false
     enemy = 0
     enemyCounter++
-    console.log(`enemyCounter++`)
     pickEnemy(player)
   }
 }
