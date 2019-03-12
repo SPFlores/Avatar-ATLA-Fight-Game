@@ -3,6 +3,7 @@ let playables = [
     name: 'Fire',
     picture: './assets/images/fire.png',
     healthpoints: 150,
+    healthpointsreset: 150,
     attack: 10,
     attackpower: 10,
     counterattackpower: 2
@@ -11,6 +12,7 @@ let playables = [
     name: 'Air',
     picture: './assets/images/air.png',
     healthpoints: 150,
+    healthpointsreset: 150,
     attack: 10,
     attackpower: 10,
     counterattackpower: 2
@@ -19,6 +21,7 @@ let playables = [
     name: 'Water',
     picture: './assets/images/water.png',
     healthpoints: 150,
+    healthpointsreset: 150,
     attack: 10,
     attackpower: 10,
     counterattackpower: 2
@@ -27,6 +30,7 @@ let playables = [
     name: 'Earth',
     picture: './assets/images/earth.png',
     healthpoints: 150,
+    healthpointsreset: 150,
     attack: 10,
     attackpower: 10,
     counterattackpower: 2
@@ -34,10 +38,12 @@ let playables = [
 ]
 
 let player = 0
-let enemyHolder = 0
-let isEnemy = false
-let isPlayer = false
-let enemy
+let enemyHolder,
+  isEnemy,
+  isPlayer,
+  enemy
+
+let chooseablePlayers = document.querySelector('#playerOptions')
 
 let chosenPlayerName = document.querySelector('#chosenPlayerName')
 let chosenPlayerPic = document.querySelector('#chosenPlayerPic')
@@ -50,15 +56,44 @@ let currentEnemyName = document.querySelector('#currentEnemyName')
 let currentEnemyPic = document.querySelector('#currentEnemyPic')
 let currentEnemyHP = document.querySelector('#currentEnemyHP')
 
+let hiddenEnemy0 = document.querySelector('#hiddenEnemy0')
+let hiddenEnemy1 = document.querySelector('#hiddenEnemy1')
+let hiddenEnemy2 = document.querySelector('#hiddenEnemy2')
+let hiddenEnemy3 = document.querySelector('#hiddenEnemy3')
+
 const init = _ => {
-  let isEnemy = false
-  let isPlayer = false
-  // reset player
+  isEnemy = false
+  isPlayer = false
+  haveLost = false
+  needsReset = false
   player = 0
-  // reset enemy
   enemyHolder = 0
-  // reset all health
-  // reset all html elements
+
+  for (var i = 0; i < playables.length; i++) {
+    playables[i].healthpoints = playables[i].healthpointsreset
+  }
+
+  for (var i = 0; i < playables.length; i++) {
+    playables[i].attack = playables[i].attackpower
+  }
+
+  chooseablePlayers.style.display = 'block'
+
+  chosenPlayerName.innerHTML = ''
+  chosenPlayerPic.innerHTML = ''
+  chosenPlayerHP.innerHTML = ''
+
+  currentEnemyName.innerHTML = ''
+  currentEnemyPic.innerHTML = ''
+  currentEnemyHP.innerHTML = ''
+
+  hiddenEnemy0.style.display = 'none'
+  hiddenEnemy1.style.display = 'none'
+  hiddenEnemy2.style.display = 'none'
+  hiddenEnemy3.style.display = 'none'
+
+  document.querySelector('.resetBtn').style.display = 'none'
+  document.querySelector('.attackBtn').style.display = 'none'
 }
 
 const choosePlayer = (player) => {
@@ -132,13 +167,11 @@ const fightEnemy = (player, enemy) => {
   let enemyHP = playables[enemy].healthpoints
   let enemyAttack = playables[enemy].counterattackpower
   console.log(enemy)
-  // console.log(isPlayer)
 
   document.querySelector('.attackBtn').style.display = 'inline'
 
   document.addEventListener('click', e => {
     if ((e.target.className === 'attackBtn') && (isEnemy) && (enemyHP > 0)) {
-      console.log(isEnemy)
       playerHP -= enemyAttack
       chosenPlayerHP.innerHTML = `<h6>${playerHP}</h6>`
       enemyHP -= playerAttack
@@ -153,6 +186,7 @@ const fightEnemy = (player, enemy) => {
 const hpCheck = (player, enemy, enemyHP) => {
   if (playerHP <= 0) {
     // loss, show reset button
+    document.querySelector('.resetBtn').style.display = 'inline'
     console.log('reset')
   } else if ((playerHP > 0) && (enemyHP <= 0)) {
     console.log('pick new')
