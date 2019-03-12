@@ -4,7 +4,7 @@ let playables = [
     picture: './assets/images/fire.png',
     healthpoints: 150,
     healthpointsreset: 150,
-    attack: 1000,
+    attack: 10,
     attackpower: 10,
     counterattackpower: 2,
     backgroundimage: './assets/images/background-fire.png'
@@ -258,5 +258,4 @@ document.addEventListener('click', e => {
   }
 })
 
-// run init
 init()
