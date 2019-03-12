@@ -17,7 +17,7 @@ let playables = [
     attack: 10,
     attackpower: 10,
     counterattackpower: 2,
-    backgroundimage: './assets/images/'
+    backgroundimage: './assets/images/background-map.png'
   },
   {
     name: 'Water',
@@ -27,7 +27,7 @@ let playables = [
     attack: 10,
     attackpower: 10,
     counterattackpower: 2,
-    backgroundimage: './assets/images/'
+    backgroundimage: './assets/images/background-map.png'
   },
   {
     name: 'Earth',
@@ -37,7 +37,7 @@ let playables = [
     attack: 10,
     attackpower: 10,
     counterattackpower: 2,
-    backgroundimage: './assets/images/'
+    backgroundimage: './assets/images/background-map.png'
   },
 ]
 
