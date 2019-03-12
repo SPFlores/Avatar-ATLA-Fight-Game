@@ -67,25 +67,32 @@ let hiddenEnemy2 = document.querySelector('#hiddenEnemy2')
 let hiddenEnemy3 = document.querySelector('#hiddenEnemy3')
 
 let playAgainButton = document.querySelector('.playAgainBtn')
+let resetButton = document.querySelector('.resetBtn')
+let attackButton = document.querySelector('.attackBtn')
+
+let winLossDiv = document.querySelector('#winloss')
 
 let backgroundEditing = document.body.style
 
 const init = _ => {
+  for (var i = 0; i < playables.length; i++) {
+    playables[i].healthpoints = (0 + playables[i].healthpointsreset)
+    console.log(`hp reset`)
+  }
+
+  for (var j = 0; j < playables.length; j++) {
+    playables[j].attack = (0 + playables[j].attackpower)
+    console.log(`attack reset`)
+  }
+
   isEnemy = false
   isPlayer = false
-  haveLost = false
-  needsReset = false
   player = 0
+  enemy = 0
   enemyHolder = 0
   enemyCounter = 0
-
-  for (var i = 0; i < playables.length; i++) {
-    playables[i].healthpoints = playables[i].healthpointsreset
-  }
-
-  for (var i = 0; i < playables.length; i++) {
-    playables[i].attack = playables[i].attackpower
-  }
+  playerHP = playables[player].healthpoints
+  playerAttack = playables[player].attackpower
 
   chooseablePlayers.style.display = 'block'
 
@@ -102,8 +109,17 @@ const init = _ => {
   hiddenEnemy2.style.display = 'none'
   hiddenEnemy3.style.display = 'none'
 
-  document.querySelector('.resetBtn').style.display = 'none'
-  document.querySelector('.attackBtn').style.display = 'none'
+  winLossDiv.innerHTML = ''
+
+  resetButton.style.display = 'none'
+  attackButton.style.display = 'none'
+  playAgainButton.style.display = 'none'
+
+  backgroundEditing.background = `url('./assets/images/background-map.png')`
+  backgroundEditing.backgroundRepeat = 'no-repeat'
+  backgroundEditing.backgroundAttachment = 'fixed'
+  backgroundEditing.backgroundPosition = 'center'
+  backgroundEditing.backgroundSize = '100% 100%'
 }
 
 const choosePlayer = (player) => {
@@ -116,12 +132,6 @@ const choosePlayer = (player) => {
   backgroundEditing.backgroundRepeat = 'no-repeat'
   backgroundEditing.backgroundAttachment = 'fixed'
   backgroundEditing.backgroundPosition = 'center'
-  backgroundEditing.backgroundSize = 'cover'
-
-  // background - attachment
-  // background - position
-  // background - size
-
   backgroundEditing.backgroundSize = '100% 100%'
 
   pickEnemy(player)
@@ -164,8 +174,7 @@ const clearChoices = _ => {
   chooseablePlayers.style.display = 'none'
 }
 
-const win = _ => {
-  // show something about how you won
+const win = (player) => {
   document.querySelector('#winloss').innerHTML = `
   <h6>Congratulations ${playables[player].name}, you have won!</h6>
   <h6>“As long as I’m confident with who I am, it doesn’t matter what other people think”—Smellerbee, Episode 2.12 “The Serpent’s Pass”</h6>
@@ -176,7 +185,6 @@ const win = _ => {
 }
 
 const loss = _ => {
-  // register loss
   document.querySelector('#winloss').innerHTML = `
   <h6>I'm sorry ${playables[player].name}, this time you have failed!</h6>
   <h6>“You have come to the crossroads of your destiny. It is time for you to choose.”—Iroh, Episode 2.20 “The Crossroads of Destiny”</h6>
@@ -188,13 +196,14 @@ const loss = _ => {
 
 const pickEnemy = (player) => {
   if (enemyCounter === 3) {
-    win()
+    win(player)
   } else {
     enemyholder = 0
     document.addEventListener('click', e => {
       if ((e.target.className === 'options hiddenEnemies') && (!isEnemy)) {
         let value = parseInt(e.target.dataset.value)
-
+        console.log(playerAttack)
+        console.log(playerAttackPower)
         isEnemy = true
         enemy = enemyHolder + value
 
@@ -203,6 +212,8 @@ const pickEnemy = (player) => {
         currentEnemyHP.innerHTML = `<h6>${playables[enemy].healthpoints}</h6>`
 
         document.querySelector(`#hiddenEnemy${value}`).style.display = 'none'
+
+        attackButton.style.display = 'inline'
 
         fightEnemy(player, enemy)
       }
@@ -213,8 +224,6 @@ const pickEnemy = (player) => {
 const fightEnemy = (player, enemy) => {
   let enemyHP = playables[enemy].healthpoints
   let enemyAttack = playables[enemy].counterattackpower
-
-  document.querySelector('.attackBtn').style.display = 'inline'
 
   document.addEventListener('click', e => {
     if ((e.target.className === 'attackBtn') && (isEnemy) && (enemyHP > 0)) {
@@ -230,16 +239,14 @@ const fightEnemy = (player, enemy) => {
 
 const hpCheck = (player, enemy, enemyHP) => {
   if (playerHP <= 0) {
-    // loss, show reset button
     loss()
-    document.querySelector('.resetBtn').style.display = 'inline'
+    resetButton.style.display = 'inline'
   } else if ((playerHP > 0) && (enemyHP <= 0)) {
     currentEnemyName.innerHTML = ''
     currentEnemyPic.innerHTML = ''
     currentEnemyHP.innerHTML = ''
-    document.querySelector('.attackBtn').style.display = 'none'
+    attackButton.style.display = 'none'
     isEnemy = false
-    enemy = 0
     enemyCounter++
     pickEnemy(player)
   }
