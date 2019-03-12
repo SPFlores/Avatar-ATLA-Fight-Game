@@ -38,6 +38,7 @@ let playables = [
 ]
 
 let player = 0
+let enemyCounter = 0
 let enemyHolder,
   isEnemy,
   isPlayer,
@@ -68,6 +69,7 @@ const init = _ => {
   needsReset = false
   player = 0
   enemyHolder = 0
+  enemyCounter = 0
 
   for (var i = 0; i < playables.length; i++) {
     playables[i].healthpoints = playables[i].healthpointsreset
@@ -141,13 +143,25 @@ const clearChoices = _ => {
   chooseablePlayers.style.display = 'none'
 }
 
+const win = _ => {
+  // show something about how you won
+  console.log(`you won`)
+}
+
+const loss = _ => {
+  // register loss
+  console.log(`loss`)
+}
+
 const pickEnemy = (player) => {
-  console.log(`first test`)
+  if (enemyCounter === 3) {
+    win()
+  }
+
   enemyholder = 0
   document.addEventListener('click', e => {
     if ((e.target.className === 'options hiddenEnemies') && (!isEnemy)) {
       let value = parseInt(e.target.dataset.value)
-      console.log(`second test`)
 
       isEnemy = true
       enemy = enemyHolder + value
@@ -166,7 +180,6 @@ const pickEnemy = (player) => {
 const fightEnemy = (player, enemy) => {
   let enemyHP = playables[enemy].healthpoints
   let enemyAttack = playables[enemy].counterattackpower
-  console.log(enemy)
 
   document.querySelector('.attackBtn').style.display = 'inline'
 
@@ -177,7 +190,6 @@ const fightEnemy = (player, enemy) => {
       enemyHP -= playerAttack
       currentEnemyHP.innerHTML = `<h6>${enemyHP}<?h6>`
       playerAttack += playerAttackPower
-      console.log(`enemy HP: ${enemyHP}`)
       hpCheck(player, enemy, enemyHP)
     }
   })
@@ -186,19 +198,18 @@ const fightEnemy = (player, enemy) => {
 const hpCheck = (player, enemy, enemyHP) => {
   if (playerHP <= 0) {
     // loss, show reset button
+    loss()
     document.querySelector('.resetBtn').style.display = 'inline'
-    console.log('reset')
   } else if ((playerHP > 0) && (enemyHP <= 0)) {
-    console.log('pick new')
     currentEnemyName.innerHTML = ''
     currentEnemyPic.innerHTML = ''
     currentEnemyHP.innerHTML = ''
     document.querySelector('.attackBtn').style.display = 'none'
     isEnemy = false
     enemy = 0
+    enemyCounter++
+    console.log(`enemyCounter++`)
     pickEnemy(player)
-  } else if ((playerHP > 0) && (enemyHP >= 0)) {
-    console.log('both alive')
   }
 }
 
