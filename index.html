@@ -11,100 +11,105 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <h1>Title of Game</h1>
-    </div>
-    <div class="row">
-      <div id="instructions">
-        <h6>Instructions</h6>
-        <p>Click on a character to choose who you will fight with and to get your enemy options! Fight your way to
-          become the champion. But be careful--some oponents are more powerful than others. Choose wisely who you fight
-          as your skills will grow stronger with time. Do you have what it takes?</p>
-      </div>
-    </div>
-
-    <div class="row" id="playerOptions">
-      <h2>Player Options</h2>
+  <!-- <div class="backgroundImage"> -->
+    <div class="container">
       <div class="row">
-        <div class="col s6 m3 l3 xl3">
-          <img class="options chooseablePlayers" id="chooseablePlayer0" src="./assets/images/fire.png" alt="Fire"
-            data-value="0">
-        </div>
-        <div class="col s6 m3 l3 xl3">
-          <img class="options chooseablePlayers" id="chooseablePlayer1" src="./assets/images/air.png" alt="Air"
-            data-value="1">
-        </div>
-        <div class="col s6 m3 l3 xl3">
-          <img class="options chooseablePlayers" id="chooseablePlayer3" src="./assets/images/water.png" alt="Water"
-            data-value="2">
-        </div>
-        <div class="col s6 m3 l3 xl3">
-          <img class="options chooseablePlayers" id="chooseablePlayer4" src="./assets/images/earth.png" alt="Earth"
-            data-value="3">
-        </div>
+        <h1>Title of Game</h1>
       </div>
-    </div>
-
-    <div class="row" id="enemyPlayers">
-      <h2>Enemies</h2>
       <div class="row">
-        <div class="col s6 m3 l3 xl3">
-          <img class="options hiddenEnemies" id="hiddenEnemy0" src="./assets/images/fire.png" alt="Fire" data-value="0">
-        </div>
-        <div class="col s6 m3 l3 xl3">
-          <img class="options hiddenEnemies" id="hiddenEnemy1" src="./assets/images/air.png" alt="Air" data-value="1">
-        </div>
-        <div class="col s6 m3 l3 xl3">
-          <img class="options hiddenEnemies" id="hiddenEnemy2" src="./assets/images/water.png" alt="Water"
-            data-value="2">
-        </div>
-        <div class="col s6 m3 l3 xl3">
-          <img class="options hiddenEnemies" id="hiddenEnemy3" src="./assets/images/earth.png" alt="Earth"
-            data-value="3">
+        <div id="instructions">
+          <h6>Instructions</h6>
+          <p>Click on a character to choose who you will fight with and to get your enemy options! Fight your way to
+            become the champion. But be careful--some oponents are more powerful than others. Choose wisely who you
+            fight
+            as your skills will grow stronger with time. Do you have what it takes?</p>
         </div>
       </div>
+
+      <div class="row" id="playerOptions">
+        <h2>Player Options</h2>
+        <div class="row">
+          <div class="col s6 m3 l3 xl3">
+            <img class="options chooseablePlayers" id="chooseablePlayer0" src="./assets/images/fire.png" alt="Fire"
+              data-value="0">
+          </div>
+          <div class="col s6 m3 l3 xl3">
+            <img class="options chooseablePlayers" id="chooseablePlayer1" src="./assets/images/air.png" alt="Air"
+              data-value="1">
+          </div>
+          <div class="col s6 m3 l3 xl3">
+            <img class="options chooseablePlayers" id="chooseablePlayer3" src="./assets/images/water.png" alt="Water"
+              data-value="2">
+          </div>
+          <div class="col s6 m3 l3 xl3">
+            <img class="options chooseablePlayers" id="chooseablePlayer4" src="./assets/images/earth.png" alt="Earth"
+              data-value="3">
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="enemyPlayers">
+        <h2>Enemies</h2>
+        <div class="row">
+          <div class="col s6 m3 l3 xl3">
+            <img class="options hiddenEnemies" id="hiddenEnemy0" src="./assets/images/fire.png" alt="Fire"
+              data-value="0">
+          </div>
+          <div class="col s6 m3 l3 xl3">
+            <img class="options hiddenEnemies" id="hiddenEnemy1" src="./assets/images/air.png" alt="Air" data-value="1">
+          </div>
+          <div class="col s6 m3 l3 xl3">
+            <img class="options hiddenEnemies" id="hiddenEnemy2" src="./assets/images/water.png" alt="Water"
+              data-value="2">
+          </div>
+          <div class="col s6 m3 l3 xl3">
+            <img class="options hiddenEnemies" id="hiddenEnemy3" src="./assets/images/earth.png" alt="Earth"
+              data-value="3">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 m6 l6 xl6">
+          <h2>Chosen Player</h2>
+          <div class="row">
+            <div id="chosenPlayerName"></div>
+          </div>
+          <div class="row">
+            <div id="chosenPlayerPic"></div>
+          </div>
+          <div class="row">
+            <div id="chosenPlayerHP"></div>
+          </div>
+        </div>
+
+        <div class="col s12 m6 l6 xl6">
+          <h2>Current Enemy</h2>
+          <div class="row">
+            <div id="currentEnemyName"></div>
+          </div>
+          <div class="row">
+            <div id="currentEnemyPic"></div>
+          </div>
+          <div class="row">
+            <div id="currentEnemyHP"></div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col s6 m6 l6 xl6">
+          <button class="attackBtn">Attack</button>
+        </div>
+        <div class="col s6 m6 l6 xl6">
+          <button class="resetBtn" onclick="init()">Reset</button>
+        </div>
+      </div>
+
     </div>
 
-    <div class="row">
-      <div class="col s12 m6 l6 xl6">
-        <h2>Chosen Player</h2>
-        <div class="row">
-          <div id="chosenPlayerName"></div>
-        </div>
-        <div class="row">
-          <div id="chosenPlayerPic"></div>
-        </div>
-        <div class="row">
-          <div id="chosenPlayerHP"></div>
-        </div>
-      </div>
-
-      <div class="col s12 m6 l6 xl6">
-        <h2>Current Enemy</h2>
-        <div class="row">
-          <div id="currentEnemyName"></div>
-        </div>
-        <div class="row">
-          <div id="currentEnemyPic"></div>
-        </div>
-        <div class="row">
-          <div id="currentEnemyHP"></div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col s6 m6 l6 xl6">
-        <button class="attackBtn">Attack</button>
-      </div>
-      <div class="col s6 m6 l6 xl6">
-        <button class="resetBtn" onclick="init()">Reset</button>
-      </div>
-    </div>
-
-  </div>
+  <!-- </div> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="./assets/javascript/game.js"></script>

@@ -1,8 +1,8 @@
 body {
-  background-image: url("../images/background-map.png");
-  background-repeat: no-repeat;
+  background: url("../images/background-map.png") no-repeat;
+  height: 100%;
+  background-size: 100%;
   background-attachment: fixed;
-  
 }
 
 .options {
