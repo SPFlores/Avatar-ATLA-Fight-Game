@@ -6,7 +6,8 @@ let playables = [
     healthpointsreset: 150,
     attack: 1000,
     attackpower: 10,
-    counterattackpower: 2
+    counterattackpower: 2,
+    backgroundimage: './assets/images/background-fire.png'
   },
   {
     name: 'Air',
@@ -15,7 +16,8 @@ let playables = [
     healthpointsreset: 150,
     attack: 10,
     attackpower: 10,
-    counterattackpower: 2
+    counterattackpower: 2,
+    backgroundimage: './assets/images/'
   },
   {
     name: 'Water',
@@ -24,7 +26,8 @@ let playables = [
     healthpointsreset: 150,
     attack: 10,
     attackpower: 10,
-    counterattackpower: 2
+    counterattackpower: 2,
+    backgroundimage: './assets/images/'
   },
   {
     name: 'Earth',
@@ -33,7 +36,8 @@ let playables = [
     healthpointsreset: 150,
     attack: 10,
     attackpower: 10,
-    counterattackpower: 2
+    counterattackpower: 2,
+    backgroundimage: './assets/images/'
   },
 ]
 
@@ -105,6 +109,9 @@ const choosePlayer = (player) => {
   chosenPlayerName.innerHTML = `<h4>${playables[player].name}</h4>`
   chosenPlayerPic.innerHTML = `<img class="options" src="${playables[player].picture}" alt="${playables[player].text}">`
   chosenPlayerHP.innerHTML = `<h6>${playerHP}</h6>`
+
+  document.body.style.background = `url('${playables[player].backgroundimage}')`
+
   pickEnemy(player)
 }
 
