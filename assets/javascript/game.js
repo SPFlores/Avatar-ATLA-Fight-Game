@@ -135,8 +135,6 @@ const choosePlayer = (player) => {
   backgroundEditing.backgroundAttachment = 'fixed'
   backgroundEditing.backgroundPosition = 'center'
   backgroundEditing.backgroundSize = '100% 100%'
-
-  // pickEnemy(player)
 }
 
 const moveEnemies = (player) => {
