@@ -2,8 +2,8 @@ let playables = [
   {
     name: 'Fire',
     picture: './assets/images/fire.png',
-    healthpoints: 175,
-    healthpointsreset: 175,
+    healthpoints: 180,
+    healthpointsreset: 180,
     attack: 9,
     attackpower: 9,
     counterattackpower: 16,
@@ -36,7 +36,7 @@ let playables = [
     healthpointsreset: 165,
     attack: 11,
     attackpower: 11,
-    counterattackpower: 18,
+    counterattackpower: 17,
     backgroundimage: './assets/images/background-earth.png'
   },
 ]
