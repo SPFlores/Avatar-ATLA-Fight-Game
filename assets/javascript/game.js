@@ -132,7 +132,7 @@ const choosePlayer = (player) => {
   isPlayer = true
   chosenPlayerName.innerHTML = `<h4>${playables[player].name}</h4>`
   chosenPlayerPic.innerHTML = `<img class="options" src="${playables[player].picture}" alt="${playables[player].text}">`
-  chosenPlayerHP.innerHTML = `<h6>${playables[player].healthpoints}</h6>`
+  chosenPlayerHP.innerHTML = `<h6>${playerHP}</h6>`
 
   backgroundEditing.background = `url('${playables[player].backgroundimage}')`
   backgroundEditing.backgroundRepeat = 'no-repeat'
@@ -194,7 +194,7 @@ const pickEnemy = (value, player) => {
 
     currentEnemyName.innerHTML = `<h4>${playables[enemy].name}</h4>`
     currentEnemyPic.innerHTML = `<img class="options" src="${playables[enemy].picture}" alt="${playables[enemy].text}">`
-    currentEnemyHP.innerHTML = `<h6>${playables[enemy].healthpoints}</h6>`
+    currentEnemyHP.innerHTML = `<h6>${enemyHP}</h6>`
 
     document.querySelector(`#hiddenEnemy${value}`).style.display = 'none'
 
