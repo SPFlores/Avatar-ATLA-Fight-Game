@@ -76,11 +76,7 @@ document.addEventListener('click', e => {
   } else if ((e.target.className === 'options hiddenEnemies') && (!isEnemy)) {
     let value = parseInt(e.target.dataset.value)
     pickEnemy(value, player)
-  }
-})
-
-document.addEventListener('click', e => {
-  if ((e.target.className === 'attackBtn')) {
+  } else if ((e.target.className === 'attackBtn')) {
     fightEnemy(player, enemy)
   }
 })
