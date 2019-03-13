@@ -77,12 +77,10 @@ let backgroundEditing = document.body.style
 const init = _ => {
   for (var i = 0; i < playables.length; i++) {
     playables[i].healthpoints = (0 + playables[i].healthpointsreset)
-    console.log(`hp reset`)
   }
 
   for (var j = 0; j < playables.length; j++) {
     playables[j].attack = (0 + playables[j].attackpower)
-    console.log(`attack reset`)
   }
 
   isEnemy = false
@@ -120,6 +118,13 @@ const init = _ => {
   backgroundEditing.backgroundAttachment = 'fixed'
   backgroundEditing.backgroundPosition = 'center'
   backgroundEditing.backgroundSize = '100% 100%'
+
+  document.addEventListener('click', e => {
+    let player = parseInt(e.target.dataset.value)
+    if (e.target.className === 'options chooseablePlayers') {
+      gamePlay(player)
+    }
+  })
 }
 
 const choosePlayer = (player) => {
@@ -197,13 +202,13 @@ const loss = _ => {
 const pickEnemy = (player) => {
   if (enemyCounter === 3) {
     win(player)
-  } else {
+  } else if (enemyCounter < 3) {
     enemyholder = 0
-    document.addEventListener('click', e => {
-      if ((e.target.className === 'options hiddenEnemies') && (!isEnemy)) {
-        let value = parseInt(e.target.dataset.value)
-        console.log(playerAttack)
-        console.log(playerAttackPower)
+    console.log(`pickEnemy: ${playables[player].name}`)
+    document.addEventListener('click', event => {
+      if ((event.target.className === 'options hiddenEnemies') && (!isEnemy)) {
+        console.log(`middle of pickEnemy: ${playables[player].name}`)
+        let value = parseInt(event.target.dataset.value)
         isEnemy = true
         enemy = enemyHolder + value
 
@@ -214,6 +219,8 @@ const pickEnemy = (player) => {
         document.querySelector(`#hiddenEnemy${value}`).style.display = 'none'
 
         attackButton.style.display = 'inline'
+
+        console.log(`end of pickEnemy: ${playables[player].name}`)
 
         fightEnemy(player, enemy)
       }
@@ -257,12 +264,5 @@ const gamePlay = (player) => {
   moveEnemies(player)
   clearChoices()
 }
-
-document.addEventListener('click', e => {
-  let player = parseInt(e.target.dataset.value)
-  if (e.target.className === 'options chooseablePlayers') {
-    gamePlay(player)
-  }
-})
 
 init()
