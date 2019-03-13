@@ -135,6 +135,9 @@ const choosePlayer = (player) => {
   backgroundEditing.backgroundAttachment = 'fixed'
   backgroundEditing.backgroundPosition = 'center'
   backgroundEditing.backgroundSize = '100% 100%'
+
+  document.querySelector('#enemyPlayers').style.display = 'inline'
+  document.querySelector('.chosenUserPlayer').style.display = "inline"
 }
 
 const moveEnemies = (player) => {
@@ -182,6 +185,8 @@ const pickEnemy = (value, player) => {
     isEnemy = true
     enemy = enemyHolder + value
     enemyHP = playables[enemy].healthpoints
+
+    document.querySelector('.chosenEnemy').style.display = 'inline'
 
     currentEnemyName.innerHTML = `<h4>${playables[enemy].name}</h4>`
     currentEnemyPic.innerHTML = `<img class="options" src="${playables[enemy].picture}" alt="${playables[enemy].text}">`

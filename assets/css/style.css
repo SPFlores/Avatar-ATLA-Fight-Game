@@ -33,3 +33,14 @@ backgroundSize = '100% 100%' */
 .playAgainBtn {
   display: none;
 }
+
+#enemyPlayers {
+  display: none;
+}
+
+.chosenUserPlayer {
+  display: none;
+}
+.chosenEnemy {
+  display: none;
+}
