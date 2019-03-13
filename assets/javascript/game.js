@@ -38,7 +38,7 @@ let playables = [
     attackpower: 11,
     counterattackpower: 17,
     backgroundimage: './assets/images/background-earth.png'
-  },
+  }
 ]
 
 let player = 0
@@ -122,6 +122,10 @@ const init = _ => {
   backgroundEditing.backgroundAttachment = 'fixed'
   backgroundEditing.backgroundPosition = 'center'
   backgroundEditing.backgroundSize = '100% 100%'
+
+  document.querySelector('#enemyPlayers').style.display = 'none'
+  document.querySelector('.chosenUserPlayer').style.display = 'none'
+  document.querySelector('.chosenEnemy').style.display = 'none'
 }
 
 const choosePlayer = (player) => {
@@ -137,7 +141,7 @@ const choosePlayer = (player) => {
   backgroundEditing.backgroundSize = '100% 100%'
 
   document.querySelector('#enemyPlayers').style.display = 'inline'
-  document.querySelector('.chosenUserPlayer').style.display = "inline"
+  document.querySelector('.chosenUserPlayer').style.display = 'inline'
 }
 
 const moveEnemies = (player) => {
